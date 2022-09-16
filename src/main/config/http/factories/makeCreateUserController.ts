@@ -6,5 +6,6 @@ export const makeRegisterUserController = (): CreateUserController => {
   const userRepository = new PrismaUserRepository();
   const createUser = new CreateUser(userRepository);
   const registerUserController = new CreateUserController(createUser);
+
   return registerUserController;
 };

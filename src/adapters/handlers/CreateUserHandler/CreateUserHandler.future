@@ -1,0 +1,43 @@
+import { InvalidEmailError } from '@entities/user/errors/InvalidEmailError';
+import { InvalidNameError } from '@entities/user/errors/InvalidNameError';
+import { InMemoryUserRepository } from '@external/repositories/in-memory/InMemoryUserRepository';
+import { CreateUser } from '@usecases/create-user/create-user';
+import { Message } from '../ports/Message';
+import { CreateUserHandler } from './CreateUserHandler';
+
+let userRepository: InMemoryUserRepository;
+let createUser: CreateUser;
+let createUserHandler: CreateUserHandler;
+describe('Email', () => {
+
+  beforeEach(() => {
+    userRepository = new InMemoryUserRepository();
+    createUser = new CreateUser(userRepository);
+    createUserHandler = new CreateUserHandler(createUser);
+  });
+
+  it('should be able to create user', async() => {
+    const message: Message = {
+      name: 'Jhon Doe',
+      email: 'jhondoe@gmail.com'
+    };
+    await expect(createUserHandler.handle(message)).resolves.not.toThrow();
+  });
+
+  it('should return 400 if an invalid email is provided', async() => {
+    const message: Message = {
+      name: 'Jhon Doe',
+      email: 'jhondoe@invalid_email.com'
+    };
+
+    await expect(await createUserHandler.handle(message)).rejects;
+  });
+
+  it('should return 400 if an invalid name is provided', async() => {
+    const message: Message = {
+      name: ' ',
+      email: 'jhondoe@gmail.com'
+    };
+    await expect(await createUserHandler.handle(message)).rejects;
+  });
+});

@@ -1,10 +1,19 @@
 /* eslint-disable no-console */
-import app from './config/app';
+import { config } from 'dotenv-flow';
+
+config({ silent: true });
+
+import httpApp from './config/http/app';
+import messagingApp from './config/messaging/app';
 
 (async() => {
-  const initializedApp = await app();
-
-  initializedApp.listen(process.env.PORT || 3000, () => {
-    console.log(`Server started at port ${process.env.PORT || 3000}`);
+  httpApp().then(express => {
+    express.listen(process.env.PORT || 3000, () => {
+      console.log(`Http server started at port ${process.env.PORT || 3000}`);
+    });
   });
+  messagingApp().then(() => {
+    console.log('Kafka consumer running!');
+  });
+
 }) ();

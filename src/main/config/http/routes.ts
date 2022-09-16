@@ -2,7 +2,7 @@ import { Express, Router } from 'express';
 import { resolve, parse } from 'path';
 import { readdirSync } from 'fs';
 
-const routesPath = resolve(__dirname, '..', 'routes');
+const routesPath = resolve(__dirname, 'routes');
 
 export default async(app: Express): Promise<void> => {
   const dirs = readdirSync(routesPath);
