@@ -1,0 +1,140 @@
+{
+	"env": {
+		"es2021": true,
+		"node": true,
+		"jest": true
+	},
+	"plugins": [
+		"@typescript-eslint",
+		"boundaries"
+	],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:boundaries/recommended"
+	],
+	"parser": "@typescript-eslint/parser",	
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"overrides": [],
+	"rules": {
+		"no-unused-vars": "off",
+		"semi": "off",
+		"no-extra-semii": "off",
+		"quotes": ["error", "single"],
+		"linebreak-style": ["error", "unix"],
+		"space-before-function-paren": ["error", "never"],
+		"object-curly-spacing": ["error", "always"],
+		"comma-dangle": ["error", "never"],
+		"no-multiple-empty-lines": ["error", {
+			"max": 1
+		}],
+		"no-trailing-spaces": ["error", {
+			"ignoreComments": true
+		}],
+		"no-console": ["warn", {
+			"allow": ["error"]
+		}],
+		"keyword-spacing": ["error", {
+			"before": true,
+			"after": true
+		}],
+		
+  	"@typescript-eslint/semi": ["error"],
+		"@typescript-eslint/no-extra-semi": "off",
+		"@typescript-eslint/camelcase": "off",
+		"@typescript-eslint/indent": ["error", 2],
+		"@typescript-eslint/no-unused-vars": ["warn", {
+			"argsIgnorePattern": "^_"
+		}],
+		"@typescript-eslint/member-delimiter-style": ["error", {
+			"multiline": {
+				"delimiter": "semi",
+				"requireLast": true
+			},
+			"singleline": {
+				"delimiter": "comma",
+				"requireLast": true
+			}
+		}],
+
+		"boundaries/element-types": [2, {
+			"default": "disallow",
+      "message": "${file.type} is not allowed to import ${dependency.type}",
+			"rules": [
+				{
+					"from": ["entities"],
+					"allow": ["entities"]
+				},
+				{
+					"from": ["usecases"],
+					"allow": ["entities", "usecases"]
+				},
+				{
+					"from": ["adapters"],
+					"allow": ["entities", "usecases", "adapters"]
+				},
+				{
+					"from": ["external"],
+					"allow": ["entities", "usecases", "adapters", "external"]
+				},
+				{
+					"from": ["main"],
+					"allow": ["entities", "usecases", "adapters", "external", "main"]
+				},
+				{
+					"from": ["shared"],
+					"allow": ["shared"]
+				}
+			]
+		}],
+		
+    "boundaries/external": [2, {			
+			"default": "disallow",
+			"rules": [
+				{
+					"from": ["main", "external"],
+					"allow": ["*", "*/*"]
+				}
+			]
+		}]
+	},
+
+	"settings": {
+		"import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    },
+		"boundaries/ignore": ["**/*.spec.ts", "**/*.test.ts"],
+		"boundaries/elements": [
+			{				
+        "type": "entities",
+        "pattern": "entities/*"
+			},
+			{				
+        "type": "usecases",
+        "pattern": "usecases/*"
+			},
+			{				
+        "type": "adapters",
+        "pattern": "adapters/*"
+			},
+			{				
+        "type": "external",
+        "pattern": "external/*"
+			},
+			{				
+        "type": "main",
+        "pattern": "main/*"
+			},
+			{				
+        "type": "shared",
+        "pattern": "shared/*"
+			}
+		]
+  }
+}

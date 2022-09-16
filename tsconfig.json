@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "skipLibCheck": true,
+    
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "paths": {
+      "@entities/*": ["src/entities/*"],
+      "@usecases/*": ["src/usecases/*"],
+      "@adapters/*": ["src/adapters/*"],
+      "@external/*": ["src/external/*"],
+      "@shared/*": ["src/shared/*"]
+    }
+  },
+  "exclude": [
+    "./node_modules/*",
+    "./dist"
+  ]
+}
