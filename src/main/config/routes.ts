@@ -7,7 +7,7 @@ const routesPath = resolve(__dirname, '..', 'routes');
 export default async(app: Express): Promise<void> => {
   const dirs = readdirSync(routesPath);
   await Promise.all(dirs.map(async file => {
-    if (!file.includes('.test.')) {
+    if (!file.includes('.test.') && !file.includes('.spec.')) {
       const fileNameWithoutExt = parse(file).name;
       const routerPath = fileNameWithoutExt === 'public' ? '/' : fileNameWithoutExt;
       const router = Router();
