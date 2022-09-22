@@ -22,7 +22,7 @@ export class CreateUserController implements ControllerAdapter {
       return badRequest(createUserResponse.value);
     }
 
-    return ok();
+    return ok(createUserResponse.value);
   }
 
 }

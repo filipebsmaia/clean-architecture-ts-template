@@ -7,9 +7,9 @@ import { Either, left, right } from '@shared/either';
 import { UserRepository } from '@usecases/ports/UserRepository';
 import { EmailAlreadyBeenTakenError } from './errors/EmailAlreadyBeenTakenError';
 
-export type CreateUserResponse = Either<InvalidNameError | InvalidEmailError, UserData>;
+type CreateUserResponse = Either<InvalidNameError | InvalidEmailError, UserData>;
 
-interface CreateUserRequest {
+export interface CreateUserRequest {
   name: string;
   email: string;
 }

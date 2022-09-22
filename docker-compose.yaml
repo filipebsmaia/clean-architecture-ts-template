@@ -13,7 +13,7 @@ services:
       - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=ca-template
     networks:
-      - service-network
+      - net
 
   zookeeper:
     container_name: zookeeper
@@ -26,7 +26,7 @@ services:
       - ZOOKEEPER_CLIENT_PORT=2181
       - ALLOW_ANONYMOUS_LOGIN=yes
     networks:
-      - service-network
+      - net
 
   kafka:
     container_name: kafka
@@ -39,15 +39,37 @@ services:
       - KAFKA_BROKER_ID=1
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper
     networks:
-      - service-network
+      - net
+
+  app:
+    container_name: app
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - './:/home/node/app'
+      - '/home/node/app/node_modules'
+    environment:
+      - PORT=3000
+      - DATABASE_URL="postgresql://postgres:docker@database:5432/ca-template?schema=public"
+      - KAFKA_BROKERS=kafka:9092
+    networks:
+      - net
+    depends_on:
+      - database
+      - kafka
+      - zookeeper
 
 networks:
-  service-network:
+  net:
     driver: bridge
 
 volumes:

@@ -18,7 +18,7 @@ export class CreateUserHandler implements HandlerAdapter {
     const { email, name } = message;
     const createUserResponse = await this.createUser.handle({ email, name });
     if (createUserResponse.isLeft()) {
-      // What to do when is Left?
+      console.error(createUserResponse.value);
     }
 
   }
