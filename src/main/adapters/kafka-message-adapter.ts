@@ -1,4 +1,4 @@
-import { HandlerAdapter } from '@adapters/handlers/HandlerAdapter';
+import { HandlerAdapter } from '@adapters/handlers/handler-adapter';
 import { KafkaMessage } from 'kafkajs';
 
 export const adaptMessage = (handler: HandlerAdapter) => {

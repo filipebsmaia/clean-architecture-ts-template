@@ -1,5 +1,5 @@
-import { InvalidEmailError } from '@entities/user/errors/InvalidEmailError';
-import { InvalidNameError } from '@entities/user/errors/InvalidNameError';
+import { InvalidEmailError } from '@entities/user/errors/invalid-email-error';
+import { InvalidNameError } from '@entities/user/errors/invalid-name-error';
 import { InMemoryUserRepository } from '@external/repositories/in-memory/in-memory-user-repository';
 import { CreateUser } from '@usecases/create-user';
 import { HttpRequest } from './ports/Http';

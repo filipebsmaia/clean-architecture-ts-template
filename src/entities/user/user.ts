@@ -1,8 +1,8 @@
 import { Email } from './email';
 import { Name } from './name';
 import { Either, right } from '@shared/either';
-import { InvalidNameError } from './errors/InvalidNameError';
-import { InvalidEmailError } from './errors/InvalidEmailError';
+import { InvalidNameError } from './errors/invalid-name-error';
+import { InvalidEmailError } from './errors/invalid-email-error';
 
 export interface UserData {
   name: Name;

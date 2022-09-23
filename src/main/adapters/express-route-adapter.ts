@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { HttpRequest, HttpResponse } from '@adapters/controllers/ports/Http';
-import { ControllerAdapter } from '@adapters/controllers/ControllerAdapter';
-import { serverError } from '@adapters/controllers/helpers/HttpHelper';
+import { ControllerAdapter } from '@adapters/controllers/controller-adapter';
+import { serverError } from '@adapters/controllers/helpers/http-helper';
 
 export const adaptRoute = (controller: ControllerAdapter) => {
   return async(req: Request, res: Response) => {

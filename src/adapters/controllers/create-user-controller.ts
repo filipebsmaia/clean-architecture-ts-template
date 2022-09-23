@@ -1,6 +1,6 @@
 import { CreateUser } from '@usecases/create-user';
-import { ControllerAdapter } from './ControllerAdapter';
-import { badRequest, ok } from './helpers/HttpHelper';
+import { ControllerAdapter } from './controller-adapter';
+import { badRequest, ok } from './helpers/http-helper';
 import { HttpRequest, HttpResponse } from './ports/Http';
 
 interface CreateUserBody {

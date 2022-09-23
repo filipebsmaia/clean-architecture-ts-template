@@ -1,5 +1,5 @@
 import { CreateUser } from '@usecases/create-user';
-import { HandlerAdapter } from './HandlerAdapter';
+import { HandlerAdapter } from './handler-adapter';
 import { Message } from './ports/Message';
 
 interface CreateUserBody {
