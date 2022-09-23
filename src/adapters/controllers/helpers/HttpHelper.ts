@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpResponse } from '../ports/Http';
-import { ServerError } from '../errors/ServerError';
+import { ServerError } from '../errors/server-error';
 
 export const badRequest = (error: Error): HttpResponse => ({
   statusCode: 400,

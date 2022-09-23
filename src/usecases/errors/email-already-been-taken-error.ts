@@ -1,4 +1,4 @@
-import { UseCaseError } from '@usecases/errors/UseCaseError';
+import { UseCaseError } from '@usecases/errors/usecase-error';
 
 export class EmailAlreadyBeenTakenError extends Error implements UseCaseError {
   constructor(email: string) {

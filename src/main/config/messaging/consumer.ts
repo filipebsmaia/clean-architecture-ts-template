@@ -2,7 +2,7 @@
 
 import { adaptMessage } from 'src/main/adapters/kafka-message-adapter';
 import { kafka } from './client';
-import { makeCreateUserHandler } from './factories/makeCreateUserHandler';
+import { makeCreateUserHandler } from './factories/create-user';
 
 export const consumer = kafka.consumer({
   groupId: 'test',
@@ -27,9 +27,11 @@ export async function start() {
   );
 
   await consumer.run({
-    async eachMessage({ topic, message }) {
+    async eachMessage(data) {
+      const { topic, message } = data;
       try {
         console.log(`[${topic}]`, message.value?.toString());
+
         switch (topic as Topic) {
           case 'account.create-user':
             await createUserHandler(message);
@@ -38,8 +40,9 @@ export async function start() {
             console.error(`Kafka topic not handled: ${topic} \nDid you forgot to assign handler for it?`);
             break;
         }
+
       } catch (err) {
-        console.log(`Error in topic ${topic} for message: ${message.value ? message.value.toString() : null}`);
+        console.log(`Error in topic ${topic} for message: ${message.value?.toString()}`);
         console.error(err);
       }
     }

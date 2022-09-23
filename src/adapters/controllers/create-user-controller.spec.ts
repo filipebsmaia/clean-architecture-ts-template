@@ -1,9 +1,9 @@
 import { InvalidEmailError } from '@entities/user/errors/InvalidEmailError';
 import { InvalidNameError } from '@entities/user/errors/InvalidNameError';
-import { InMemoryUserRepository } from '@external/repositories/in-memory/InMemoryUserRepository';
-import { CreateUser } from '@usecases/create-user/create-user';
-import { HttpRequest } from '../ports/Http';
-import { CreateUserController } from './CreateUserController';
+import { InMemoryUserRepository } from '@external/repositories/in-memory/in-memory-user-repository';
+import { CreateUser } from '@usecases/create-user';
+import { HttpRequest } from './ports/Http';
+import { CreateUserController } from './create-user-controller';
 
 let userRepository: InMemoryUserRepository;
 let createUser: CreateUser;

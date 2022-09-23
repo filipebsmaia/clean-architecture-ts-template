@@ -1,7 +1,7 @@
-import { CreateUser } from '@usecases/create-user/create-user';
-import { ControllerAdapter } from '../ControllerAdapter';
-import { badRequest, ok } from '../helpers/HttpHelper';
-import { HttpRequest, HttpResponse } from '../ports/Http';
+import { CreateUser } from '@usecases/create-user';
+import { ControllerAdapter } from './ControllerAdapter';
+import { badRequest, ok } from './helpers/HttpHelper';
+import { HttpRequest, HttpResponse } from './ports/Http';
 
 interface CreateUserBody {
   email: string;

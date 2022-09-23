@@ -4,8 +4,8 @@ import { InvalidNameError } from '@entities/user/errors/InvalidNameError';
 import { Name } from '@entities/user/name';
 import { User, UserData } from '@entities/user/user';
 import { Either, left, right } from '@shared/either';
-import { UserRepository } from '@usecases/ports/UserRepository';
-import { EmailAlreadyBeenTakenError } from './errors/EmailAlreadyBeenTakenError';
+import { UserRepository } from '@usecases/ports/user-repository';
+import { EmailAlreadyBeenTakenError } from './errors/email-already-been-taken-error';
 
 type CreateUserResponse = Either<InvalidNameError | InvalidEmailError, UserData>;
 

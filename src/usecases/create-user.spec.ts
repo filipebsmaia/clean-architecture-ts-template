@@ -1,7 +1,7 @@
-import { UserRepository } from '@usecases/ports/UserRepository';
-import { InMemoryUserRepository } from '@external/repositories/in-memory/InMemoryUserRepository';
+import { UserRepository } from '@usecases/ports/user-repository';
+import { InMemoryUserRepository } from '@external/repositories/in-memory/in-memory-user-repository';
 import { CreateUser } from './create-user';
-import { EmailAlreadyBeenTakenError } from './errors/EmailAlreadyBeenTakenError';
+import { EmailAlreadyBeenTakenError } from './errors/email-already-been-taken-error';
 import { User } from '@entities/user/user';
 import { UserMapper } from '@external/mappers/UserMapper';
 

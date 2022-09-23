@@ -1,6 +1,6 @@
 import { User } from '@entities/user/user';
 import { UserMapper } from '@external/mappers/UserMapper';
-import { UserRepository } from '@usecases/ports/UserRepository';
+import { UserRepository } from '@usecases/ports/user-repository';
 import { prisma } from './helpers/prisma-helper';
 
 type PrismaDBType = typeof prisma.user;

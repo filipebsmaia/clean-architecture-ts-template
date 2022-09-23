@@ -1,6 +1,6 @@
-import { CreateUser } from '@usecases/create-user/create-user';
-import { HandlerAdapter } from '../HandlerAdapter';
-import { Message } from '../ports/Message';
+import { CreateUser } from '@usecases/create-user';
+import { HandlerAdapter } from './HandlerAdapter';
+import { Message } from './ports/Message';
 
 interface CreateUserBody {
   email: string;
@@ -17,8 +17,9 @@ export class CreateUserHandler implements HandlerAdapter {
   async handle(message: Message<CreateUserBody>): Promise<void> {
     const { email, name } = message;
     const createUserResponse = await this.createUser.handle({ email, name });
+
     if (createUserResponse.isLeft()) {
-      console.error(createUserResponse.value);
+      throw createUserResponse.value;
     }
 
   }

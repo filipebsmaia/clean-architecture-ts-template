@@ -1,6 +1,6 @@
-import { CreateUserHandler } from '@adapters/handlers/CreateUserHandler/CreateUserHandler';
-import { PrismaUserRepository } from '@external/repositories/prisma/PrismaUserRepository';
-import { CreateUser } from '@usecases/create-user/create-user';
+import { CreateUserHandler } from '@adapters/handlers/create-user-handler';
+import { PrismaUserRepository } from '@external/repositories/prisma/prisma-user-repository';
+import { CreateUser } from '@usecases/create-user';
 
 export const makeCreateUserHandler = (): CreateUserHandler => {
   const userRepository = new PrismaUserRepository();
