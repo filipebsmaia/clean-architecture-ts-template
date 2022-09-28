@@ -1,6 +1,7 @@
 import { Name } from './name';
 
 describe('NameValidator', () => {
+
   it('should be able to accept valid name', () => {
     expect(Name.validate('Jhon Doe')).toBe(true);
   });

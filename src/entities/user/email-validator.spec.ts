@@ -1,6 +1,7 @@
 import { Email } from './email';
 
 describe('EmailValidator', () => {
+
   it('should be able to accept valid email', () => {
     expect(Email.validate('jhondoe@gmail.com')).toBe(true);
   });
